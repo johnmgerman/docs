@@ -405,8 +405,7 @@ XML data is decoded into a ``SimpleXMLElement`` tree::
     $xml = $response->xml;
 
     // Get some JSON
-    $http = new Client();
-    $response = $http->get('http://example.com/test.json');
+    $http = new Client();    $response = $http->get('http://example.com/test.json');
     $json = $response->json;
 
 The decoded response data is stored in the response object, so accessing it
@@ -417,14 +416,15 @@ Accessing Response Headers
 
 You can access headers through a few different methods. Header names are always
 treated as case-insensitive values when accessing them through methods::
-
     // Get all the headers as an associative array.
     $response->getHeaders();
 
     // Get a single header as an array.
     $response->getHeader('content-type');
 
-    // Get a header as a string
+// Get the complete data for a single cookie
+    // includes value, expires, path, httponly, secure keys.
+    $response->getCookieData('session_id');    // Get a header as a string
     $response->getHeaderLine('content-type');
 
     // Get the response encoding
@@ -445,7 +445,7 @@ data you need about the cookies::
     // Get a single cookie's value.
     $response->getCookie('session_id');
 
-    // Get a the complete data for a single cookie
+    // Get the complete data for a single cookie
     // includes value, expires, path, httponly, secure keys.
     $response->getCookieData('session_id');
 
